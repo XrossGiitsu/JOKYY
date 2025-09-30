@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Terimakasih - JOKYY</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body{
+      margin:0;
+      font-family:Inter,sans-serif;
+      background:#0f172a;
+      color:#e6eef8;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+      text-align:center;
+    }
+    .card{
+      background:#0b1220;
+      padding:28px;
+      border-radius:16px;
+      max-width:500px;
+      width:100%;
+      box-shadow:0 4px 12px rgba(0,0,0,0.4);
+    }
+    .logo{
+      width:200px;
+      height:200px;
+      border-radius:20px;
+      object-fit:cover;
+      display:block;
+      margin:0 auto 16px;
+    }
+    h2{margin:0 0 12px 0}
+    .btn{
+      background:#7c3aed;
+      border:none;
+      color:white;
+      padding:10px 14px;
+      border-radius:10px;
+      font-weight:600;
+      cursor:pointer;
+      margin-top:18px;
+      display:inline-block;
+      text-decoration:none;
+    }
+    .btn + .btn {
+      margin-left:8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img src="logo2.png" alt="Logo JOKYY" class="logo">
+
+    <h2>Terimakasih telah menggunakan jasa JOKYY 🎉</h2>
+    <p>Silahkan lanjutkan proses dengan menghubungi admin kami via WhatsApp.<br></p>
+
+    <div>
+      <button class="btn" onclick="backHome()">Kembali ke Halaman Utama</button>
+      <a id="waLink" class="btn" target="_blank">Hubungi Admin via WhatsApp</a>
+    </div>
+  </div>
+
+  <script>
+    function backHome(){
+      window.location.href = 'index.html';
+    }
+
+    const params = new URLSearchParams(window.location.search);
+
+    const text =
+      `Halo Admin JOKYY, saya ingin memesan joki:\n\n` +
+      `👤 Nama: ${params.get("name")}\n` +
+      `📱 WhatsApp: ${params.get("wa")}\n` +
+      `🆔 Server: ${params.get("server")}\n` +
+      `🎯 Target: ${params.get("target")}\n` +
+      `📝 Catatan: ${params.get("accinfo") || "-"}`;
+
+    const waNumber = "6285776423210";
+
+    document.getElementById("waLink").href =
+      `https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`;
+  </script>
+</body>
+</html>

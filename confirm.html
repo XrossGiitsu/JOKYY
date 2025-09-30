@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Konfirmasi Pesanan - JOKYY</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin:0; font-family:Inter, sans-serif;
+      background:#0f172a; color:#e6eef8;
+      display:flex; justify-content:center; align-items:center;
+      min-height:100vh;
+    }
+    .card {
+      background:#0b1220;
+      padding:28px; border-radius:16px;
+      max-width:500px; width:100%;
+      box-shadow:0 4px 12px rgba(0,0,0,0.4);
+    }
+    .header {
+      display:flex; align-items:center;
+      margin-bottom:20px;
+    }
+    .header img {
+      width:48px; height:48px;
+      border-radius:50%; object-fit:cover;
+      margin-right:12px;
+    }
+    .header-text {
+      display:flex; flex-direction:column;
+      justify-content:center;
+    }
+    .header-text .brand {
+      font-size:20px; font-weight:800; color:#fff;
+    }
+    .header-text .sub {
+      font-size:14px; font-weight:400; color:#94a3b8;
+    }
+    h2 {margin-top:0; text-align:center}
+    table {
+      width:100%; border-collapse:collapse; margin:16px 0;
+    }
+    td {
+      padding:10px; border-bottom:1px solid rgba(255,255,255,0.1);
+    }
+    td:first-child {
+      font-weight:600; width:40%; color:#cbd5e1;
+    }
+    .btn {
+      background:#7c3aed; border:none; color:white;
+      padding:10px 14px; border-radius:10px;
+      font-weight:600; cursor:pointer; margin-top:10px;
+    }
+    .ghost {
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.2);
+      padding:10px 14px; border-radius:10px;
+      color:#aaa; margin-left:8px;
+      cursor:pointer;
+    }
+    .actions {text-align:center; margin-top:14px}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img src="logo.png" alt="Logo JOKYY">
+      <div class="header-text">
+        <span class="brand">JOKYY</span>
+        <span class="sub">JOKI by KYY</span>
+      </div>
+    </div>
+
+    <h2>Konfirmasi Data Pesanan</h2>
+    <table>
+      <tr><td>Nama</td><td id="val-name"></td></tr>
+      <tr><td>WhatsApp</td><td id="val-wa"></td></tr>
+      <tr><td>ID / Server</td><td id="val-server"></td></tr>
+      <tr><td>Estimasi Target</td><td id="val-target"></td></tr>
+      <tr><td>Catatan</td><td id="val-accinfo"></td></tr>
+    </table>
+
+    <div class="actions">
+      <button class="btn" onclick="goThanks()">Benar, Lanjut</button>
+      <button class="ghost" onclick="history.back()">Ubah Data</button>
+    </div>
+  </div>
+
+  <script>
+  const params = new URLSearchParams(window.location.search);
+  document.getElementById("val-name").innerText = params.get("name") || "-";
+  document.getElementById("val-wa").innerText = params.get("wa") || "-";
+  document.getElementById("val-server").innerText = params.get("server") || "-";
+  document.getElementById("val-target").innerText = params.get("target") || "-";
+  document.getElementById("val-accinfo").innerText = params.get("accinfo") || "-";
+
+  function goThanks(){ 
+    window.location.href = "thanks.html?" + params.toString(); 
+    }
+</script>
+</body>
+</html>
